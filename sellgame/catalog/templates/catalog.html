@@ -59,8 +59,12 @@
                 </tr>
                 </tbody>
             </table>
-            <p class="link-read-game"><a href="{{ cat.get_absolute_url }}">Страница игры</a></p>
-            <hr><br>
+            <button type="button" class="btn btn-primary" onclick="location.href='{{ cat.get_absolute_url }}'"
+                    name='mybtn1'>Страница игры
+            </button>
+
+            <hr>
+            <br>
             {% endfor %}
         </div>
     </div>
