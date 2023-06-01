@@ -6,9 +6,9 @@ from sellgame import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.index, name='home'),
     path('catalog/', include('catalog.urls', namespace='shop')),
-    path('account/', include('account.urls')),
+    path('account/', include('users.urls')),
 ]
 
 if settings.DEBUG:
