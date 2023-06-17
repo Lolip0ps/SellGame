@@ -9,4 +9,4 @@ from datetime import date
 
 def index(request):
     news_bd = News.objects.filter(is_published=True).order_by('time_create').reverse()
-    return render(request, 'index.html', {'News': news_bd})
+    return render(request, 'news/index.html', {'News': news_bd})

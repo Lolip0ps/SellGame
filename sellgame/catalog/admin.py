@@ -18,3 +18,17 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+
+class NameAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+
+
+admin.site.register(NameGame, NameAdmin)
+
+
+class KeyAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'key']
+
+
+admin.site.register(KeyGame, KeyAdmin)

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,8 +30,20 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy("profile")
 LOGOUT_REDIRECT_URL = '/'
+CART_SESSION_ID = 'cart'
+
+# Email settting
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'Lolipops1236q@yandex.ru'
+EMAIL_HOST_PASSWORD = 'mcvowxwkjljrgrmz'
+DEFAULT_FROM_EMAIL = 'Lolipops1236q@yandex.ru'
 
 # Application definition
 
@@ -42,7 +56,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'catalog',
-    'users'
+    'users',
+    'cart',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +76,7 @@ ROOT_URLCONF = 'sellgame.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart'
             ],
         },
     },
